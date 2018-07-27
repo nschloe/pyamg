@@ -5,6 +5,11 @@ environment:
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_env.cmd"
+    # for pypi
+    USER:
+        secure: tLofMqeH2HanaUxSAhgB7w==
+    PASS:
+        secure: KZ/QlnFM6G2pPgsK7Wv15w==
 
   matrix:
 
@@ -123,7 +128,7 @@ build_script:
 
 test_script:
   # Run the project tests
-  - "%CMD_IN_ENV% python setup.py tests"
+  - "%CMD_IN_ENV% python setup.py test"
 
 after_test:
   # If tests are successful, create binary packages for the project.
@@ -136,5 +141,6 @@ artifacts:
   # Archive the generated packages in the ci.appveyor.com build report.
   - path: dist\*
 
-#on_success:
+on_success:
 #  - TODO: upload the content of dist/*.whl to a public wheelhouse
+  - twine upload -u %USER% -p %PASS% dist/*
