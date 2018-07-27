@@ -9,7 +9,7 @@ environment:
     USER:
         secure: tLofMqeH2HanaUxSAhgB7w==
     PASS:
-        secure: KZ/QlnFM6G2pPgsK7Wv15w==
+        secure: KAlU5asGZASipxOdY5Vlhw==
 
   matrix:
 
