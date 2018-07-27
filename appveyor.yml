@@ -123,7 +123,7 @@ install:
   - "%CMD_IN_ENV% pip install -r requirements.txt"
 
   # Install wheel
-  - "%CMD_IN_ENV% pip install wheel"
+  - "%CMD_IN_ENV% pip install twine wheel"
 
 build_script:
   # Build the compiled extension
